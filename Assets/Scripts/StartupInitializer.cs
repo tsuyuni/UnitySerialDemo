@@ -1,20 +1,16 @@
 using UnityEngine;
 
-public class StartupInitializer : MonoBehaviour
+public class StartupInitializer
 {
+  public static string PortName = "/dev/tty.usbserial-1130";
+  public static int BaudRate = 9600;
+
+
   [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-  static void Initialize()
+  private static void Initialize()
   {
     Debug.Log("Initializing...");
-  }
 
-  void Start()
-  {
-
-  }
-
-  void Update()
-  {
-
+    SerialManager.Open(portName: PortName, baudRate: BaudRate);
   }
 }
